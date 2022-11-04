@@ -2,6 +2,7 @@ import SwiftUI
 
 class AppDataModel: ObservableObject {
     @Published var currentTab: Tab = .home
+    @Published var currentDetailPage: String?
     
     func checkDeepLink (url: URL) -> Bool {
         guard let  host = URLComponents(url: url, resolvingAgainstBaseURL: true)?.host else { return false }
@@ -17,6 +18,17 @@ class AppDataModel: ObservableObject {
         }
  
         return true
+    }
+    
+    func checkInternalLinks(host: String) -> Bool {
+        if let index = coffees.firstIndex(where: { coffee in
+            return coffee.id == host
+        }) {
+            currentTab = .search
+            return true
+        }
+        
+        return false
     }
 }
 

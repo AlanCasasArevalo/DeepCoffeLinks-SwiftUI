@@ -8,7 +8,7 @@ struct SearchView: View {
             List {
                 // List of coffees
                 ForEach(coffees) { coffee in
-                    NavigationLink {
+                    NavigationLink (tag: coffee.id, selection: $appData.currentDetailPage) {
                         DetailView(coffee: coffee)
                     } label: {
                         HStack(spacing: 15) {
