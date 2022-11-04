@@ -4,7 +4,10 @@ import SwiftUI
 struct DeepCoffeLinksApp: App {
     var body: some Scene {
         WindowGroup {
-            HomeView()
+            ContentView()
+                .onOpenURL { url in
+                    print(url)
+                }
         }
     }
 }
