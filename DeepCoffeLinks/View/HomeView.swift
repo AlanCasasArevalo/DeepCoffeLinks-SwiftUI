@@ -2,17 +2,17 @@ import SwiftUI
 
 struct HomeView: View {
     
-    @StateObject var dataModel = AppDataModel()
+    @EnvironmentObject var appData: AppDataModel
     
     var body: some View {
-        TabView(selection: $dataModel.currentTab) {
+        TabView(selection: $appData.currentTab) {
             Text("Home")
                 .tag(Tab.home)
                 .tabItem {
                     Image(systemName: "house.fill")
                 }
             SearchView()
-                .environmentObject(dataModel)
+                .environmentObject(appData)
                 .tag(Tab.search)
                 .tabItem {
                     Image(systemName: "magnifyingglass")
