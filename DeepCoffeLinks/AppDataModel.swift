@@ -14,7 +14,7 @@ class AppDataModel: ObservableObject {
         } else if host == Tab.settings.rawValue {
             currentTab = .settings
         } else {
-            return false
+            return checkInternalLinks(host: host)
         }
  
         return true
@@ -25,6 +25,7 @@ class AppDataModel: ObservableObject {
             return coffee.id == host
         }) {
             currentTab = .search
+            currentDetailPage = coffees[index].id
             return true
         }
         
