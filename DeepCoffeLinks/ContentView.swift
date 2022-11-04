@@ -1,8 +1,11 @@
 import SwiftUI
 
 struct ContentView: View {
+    @EnvironmentObject var appData: AppDataModel
+
     var body: some View {
         HomeView()
+            .environmentObject(appData)
     }
 }
 
